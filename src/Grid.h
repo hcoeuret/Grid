@@ -1,15 +1,19 @@
-#include "Grip.cpp"
+
+#ifndef GRID_H
+#define GRID_H
 
 class Grid
 {
     private:
 
-    int mGrid[][];
-    int mRowCount;
-    int mColumnCount;
-
+        int mGrid[3][3];
+        
     public: 
-    
-    Grid(mRowcount = 0, mColumnCount = 0);
 
-}
+        Grid();
+
+        void DisplayGrid();
+
+};
+
+#endif 

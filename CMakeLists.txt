@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(ProjectGrid VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(ProjectGrid Grid.cpp)
+add_executable(ProjectGrid
+    src/main.cpp
+    src/Grid.cpp
+)
+
 
