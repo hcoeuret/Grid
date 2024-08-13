@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/hcoeuret/Documents/Code_projects/build",
+  "command": "/usr/bin/c++   -g -o CMakeFiles/ProjectGrid.dir/Grid.cpp.o -c /home/hcoeuret/Documents/Code_projects/Grid.cpp",
+  "file": "/home/hcoeuret/Documents/Code_projects/Grid.cpp"
+}
+]
