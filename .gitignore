@@ -1,0 +1,27 @@
+# Compiled object files
+*.o
+*.obj
+
+# Compiled binary files
+*.exe
+*.out
+*.app
+
+# Dependency files
+*.d
+
+# Build directories
+/build/
+/bin/
+/obj/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
