@@ -7,32 +7,17 @@ using namespace std;
 
 int main()
 {
+    //create world
     Grid sampleGrid(7,7);
     sampleGrid.DisplayGrid();
 
+    //Initialize SDL display 
     DisplaySystem GridDisplaySystem;
 
-    //event loop stopper
-    bool quit = false;
-    // Event handler
-    SDL_Event e;
+    //Enter the infinite render loop
+    GridDisplaySystem.RenderLoop();
 
-    // While the application is running
-    while (!quit) {
-        // Handle events on the queue
-        while (SDL_PollEvent(&e) != 0) {
-            // User requests quit (when window is closed)
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
-        }
-
-        SDL_SetRenderDrawColor(GridDisplaySystem.getRenderer(), 0, 100, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(GridDisplaySystem.getRenderer());
-        // Update the screen
-        SDL_RenderPresent(GridDisplaySystem.getRenderer());
-    }
+    //SDL_cleaner
     SDL_DestroyWindow(GridDisplaySystem.getWindow());
-
     SDL_Quit();
 }

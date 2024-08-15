@@ -27,6 +27,30 @@ SDL_Window* DisplaySystem::getWindow() const
     return window;
 }
 
+void DisplaySystem::RenderLoop()
+{
+    //event loop stopper
+    bool quit = false;
+    // Event handler
+    SDL_Event e;
+
+    // While the application is running
+    while (!quit) {
+        // Handle events on the queue
+        while (SDL_PollEvent(&e) != 0) {
+            // User requests quit (when window is closed)
+            if (e.type == SDL_QUIT) {
+                quit = true;
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderer, 0, 100, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderClear(renderer);
+        // Update the screen
+        SDL_RenderPresent(renderer);
+    }
+}
+
 void DisplaySystem::DisplayGrid(Grid *Grid)
 {
     //TODO
