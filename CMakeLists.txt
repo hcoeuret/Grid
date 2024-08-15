@@ -7,6 +7,7 @@ include_directories(${SDL2_INCLUDE_DIRS})
 add_executable(ProjectGrid
     src/main.cpp
     src/Grid.cpp
+    src/DisplaySystem.cpp
 )
 
 target_link_libraries(ProjectGrid ${SDL2_LIBRARIES})
