@@ -17,6 +17,7 @@ class DisplaySystem
     DisplaySystem();
 
     void ClearScreenWithColor();
+    void DisplayGrid(class Grid * Grid);
     SDL_Renderer* getRenderer() const;
     SDL_Window* getWindow() const;
 

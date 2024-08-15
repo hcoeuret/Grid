@@ -7,11 +7,10 @@ using namespace std;
 
 int main()
 {
-    Grid sampleGrid;
+    Grid sampleGrid(7,7);
     sampleGrid.DisplayGrid();
 
     DisplaySystem GridDisplaySystem;
-
 
     //event loop stopper
     bool quit = false;

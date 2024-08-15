@@ -1,4 +1,5 @@
 #include "DisplaySystem.h"
+#include "Grid.h"
 
 DisplaySystem::DisplaySystem()
 {
@@ -26,7 +27,12 @@ SDL_Window* DisplaySystem::getWindow() const
     return window;
 }
 
-SDL_Renderer* DisplaySystem::getRenderer() const
+void DisplaySystem::DisplayGrid(Grid *Grid)
+{
+    //TODO
+}
+
+SDL_Renderer *DisplaySystem::getRenderer() const
 {
     return renderer;
 }

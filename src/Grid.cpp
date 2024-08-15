@@ -4,27 +4,20 @@
 
 using namespace std;
 
-Grid::Grid()
+//intialize Grid with a 2D vector of size 3x3 by default
+Grid::Grid(int RowNumber, int ColumnNumber)
 {
-
-for(int i=0; i<3; i++)
-    {
-        for(int j=0; j<3; j++)
-        {
-            mGrid[i][j] = 0;
-        }
-    }
+    mGrid = std::vector<std::vector<int>>(ColumnNumber, std::vector<int>(RowNumber, 0));
 }
 
+ 
 
 void Grid::DisplayGrid()
 {
-    for(int i=0; i<3; i++)
-    {
-        for(int j=0; j<3; j++)
-        {
-            cout << " " << mGrid[i][j] << " ";
+    for (const auto& row : mGrid) {
+        for (int elem : row) {
+            std::cout << elem << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }

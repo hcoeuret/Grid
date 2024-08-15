@@ -2,15 +2,17 @@
 #ifndef GRID_H
 #define GRID_H
 
+#include <vector>
+
 class Grid
 {
     private:
 
-        int mGrid[3][3];
-        
+        std::vector<std::vector<int>> mGrid;
+
     public: 
 
-        Grid();
+        Grid(int RowNumber = 3, int ColumnNumber = 3);
 
         void DisplayGrid();
 
