@@ -46,14 +46,19 @@ void DisplaySystem::RenderLoop()
 
         SDL_SetRenderDrawColor(renderer, 0, 100, 0, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
+        DisplayGrid();
+
+
         // Update the screen
         SDL_RenderPresent(renderer);
+        
     }
 }
 
-void DisplaySystem::DisplayGrid(Grid *Grid)
+void DisplaySystem::DisplayGrid()
 {
-    //TODO
+    SDL_SetRenderDrawColor(renderer, 255,255,255,SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawPoint(renderer, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 }
 
 SDL_Renderer *DisplaySystem::getRenderer() const
