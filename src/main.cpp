@@ -10,6 +10,7 @@ int main()
     //create world
     Grid sampleGrid(192,108);
     sampleGrid.DisplayGrid();
+    sampleGrid.SetPixelAtLocation(96,54,125);
 
     //Initialize SDL display 
     DisplaySystem GridDisplaySystem;

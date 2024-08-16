@@ -15,8 +15,9 @@ class Grid
         Grid(int RowNumber = 3, int ColumnNumber = 3);
         
         const std::vector<std::vector<int>>& getGrid() const;
-
         void DisplayGrid() const;
+        void SetPixelAtLocation(int Row, int Column, int Value);
+        void ComputeTick();
 
 };
 
