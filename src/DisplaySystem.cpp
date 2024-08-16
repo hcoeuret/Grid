@@ -60,7 +60,7 @@ void DisplaySystem::DisplayGrid(const Grid& grid)
     for(int i = 0 ; i < grid.getGrid().size(); i++){
         for(int j = 0 ; j < grid.getGrid()[0].size() ; j++){
             SDL_SetRenderDrawColor(renderer, (255 + i*100)%255, (255 + j*100)%255, 0, 255);  // Red rectangle
-            tmp_rect= SDL_Rect{i*100,j*100,100,100}; //x, y, w, h
+            tmp_rect= SDL_Rect{i*PIXELSIZE,j*PIXELSIZE,PIXELSIZE,PIXELSIZE}; //x, y, w, h
             SDL_RenderFillRect(renderer, &tmp_rect);
         }
     }

@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     //create world
-    Grid sampleGrid(5,5);
+    Grid sampleGrid(192,108);
     sampleGrid.DisplayGrid();
 
     //Initialize SDL display 
