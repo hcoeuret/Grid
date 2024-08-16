@@ -10,9 +10,12 @@ Grid::Grid(int RowNumber, int ColumnNumber)
     mGrid = std::vector<std::vector<int>>(ColumnNumber, std::vector<int>(RowNumber, 0));
 }
 
- 
+const std::vector<std::vector<int>>& Grid::getGrid() const
+{
+    return mGrid;
+}
 
-void Grid::DisplayGrid()
+void Grid::DisplayGrid() const
 {
     for (const auto& row : mGrid) {
         for (int elem : row) {

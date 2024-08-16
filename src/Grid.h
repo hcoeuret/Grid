@@ -13,8 +13,10 @@ class Grid
     public: 
 
         Grid(int RowNumber = 3, int ColumnNumber = 3);
+        
+        const std::vector<std::vector<int>>& getGrid() const;
 
-        void DisplayGrid();
+        void DisplayGrid() const;
 
 };
 

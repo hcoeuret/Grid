@@ -1,6 +1,7 @@
 #ifndef DISPLAYSYTEM_H
 #define DISPLAYSYTEM_H
 #include <SDL2/SDL.h>
+#include "Grid.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -17,10 +18,10 @@ class DisplaySystem
     DisplaySystem();
 
     void ClearScreenWithColor();
-    void DisplayGrid();
+    void DisplayGrid(const Grid& grid);
     SDL_Renderer* getRenderer() const;
     SDL_Window* getWindow() const;
-    void RenderLoop();
+    void RenderLoop(Grid& grid);
 
 };
 

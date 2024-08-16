@@ -8,14 +8,14 @@ using namespace std;
 int main()
 {
     //create world
-    Grid sampleGrid(7,7);
+    Grid sampleGrid(5,5);
     sampleGrid.DisplayGrid();
 
     //Initialize SDL display 
     DisplaySystem GridDisplaySystem;
 
     //Enter the infinite render loop
-    GridDisplaySystem.RenderLoop();
+    GridDisplaySystem.RenderLoop(sampleGrid);
 
     //SDL_cleaner
     SDL_DestroyWindow(GridDisplaySystem.getWindow());

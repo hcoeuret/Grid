@@ -1,5 +1,5 @@
+#include <vector>
 #include "DisplaySystem.h"
-#include "Grid.h"
 
 DisplaySystem::DisplaySystem()
 {
@@ -27,7 +27,7 @@ SDL_Window* DisplaySystem::getWindow() const
     return window;
 }
 
-void DisplaySystem::RenderLoop()
+void DisplaySystem::RenderLoop(Grid& grid)
 {
     //event loop stopper
     bool quit = false;
@@ -44,10 +44,9 @@ void DisplaySystem::RenderLoop()
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 0, 100, 0, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
-        DisplayGrid();
-
+        DisplayGrid(grid);
 
         // Update the screen
         SDL_RenderPresent(renderer);
@@ -55,10 +54,16 @@ void DisplaySystem::RenderLoop()
     }
 }
 
-void DisplaySystem::DisplayGrid()
+void DisplaySystem::DisplayGrid(const Grid& grid)
 {
-    SDL_SetRenderDrawColor(renderer, 255,255,255,SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawPoint(renderer, SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+    SDL_Rect tmp_rect; //x, y, w, h
+    for(int i = 0 ; i < grid.getGrid().size(); i++){
+        for(int j = 0 ; j < grid.getGrid()[0].size() ; j++){
+            SDL_SetRenderDrawColor(renderer, (255 + i*100)%255, (255 + j*100)%255, 0, 255);  // Red rectangle
+            tmp_rect= SDL_Rect{i*100,j*100,100,100}; //x, y, w, h
+            SDL_RenderFillRect(renderer, &tmp_rect);
+        }
+    }
 }
 
 SDL_Renderer *DisplaySystem::getRenderer() const
