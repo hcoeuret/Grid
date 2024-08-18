@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "Grid.h"
+#include "Global.h"
 
 /*
 The world class handle grid manipulation
@@ -21,6 +22,10 @@ class World
     World();
 
     void ComputeTick();
+    const Grid& getCurrentGrid() const{
+        return currentGrid;
+    }
+    void initWorld();
 
 
 };

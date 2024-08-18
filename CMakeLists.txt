@@ -7,6 +7,8 @@ include_directories(${SDL2_INCLUDE_DIRS})
 add_executable(ProjectGrid
     src/main.cpp
     src/Grid.cpp
+    src/World.cpp
+    src/Global.cpp
     src/DisplaySystem.cpp
 )
 

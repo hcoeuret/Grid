@@ -2,21 +2,19 @@
 
 World::World()
 {
-    currentGrid = Grid();
-    nextGrid = Grid();
+    currentGrid = Grid(SCREEN_WIDTH/PIXELSIZE, SCREEN_HEIGHT/PIXELSIZE);
+    nextGrid = Grid(SCREEN_WIDTH/PIXELSIZE, SCREEN_HEIGHT/PIXELSIZE);
 }
 
 void World::ComputeTick()
 {
-    for(int i = mGrid.size()-1 ; i > 0; i--)
-    {
-        for(int j = mGrid[0].size() ; j > 0 ; j--)
-        {
-            if(mGrid[i][j]>0 ){
-                mGrid[i][j+1]=mGrid[i][j];
-                mGrid[i][j]=0;
-            }
-        }
-    }
+    currentGrid.ComputeNextGrid(nextGrid);
+    currentGrid = nextGrid;
 
+}
+
+void World::initWorld()
+{
+    currentGrid.DisplayGrid();
+    currentGrid.SetPixelAtLocation(96,54,125);
 }

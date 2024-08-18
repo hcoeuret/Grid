@@ -2,6 +2,8 @@
 #define DISPLAYSYTEM_H
 #include <SDL2/SDL.h>
 #include "Grid.h"
+#include "World.h"
+#include "Global.h"
 
 class DisplaySystem
 {
@@ -17,7 +19,7 @@ class DisplaySystem
     void DisplayGrid(const Grid& grid);
     SDL_Renderer* getRenderer() const;
     SDL_Window* getWindow() const;
-    void RenderLoop(Grid& grid);
+    void RenderLoop(World& world);
 
 };
 
