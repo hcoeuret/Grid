@@ -1,5 +1,6 @@
 #include <vector>
 #include "DisplaySystem.h"
+#include "Global.h"
 
 DisplaySystem::DisplaySystem()
 {
@@ -46,7 +47,7 @@ void DisplaySystem::RenderLoop(Grid& grid)
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
-        grid.ComputeTick();
+        //ComputeTick(); TODO replace with world.computetick
         DisplayGrid(grid);
 
         // Update the screen

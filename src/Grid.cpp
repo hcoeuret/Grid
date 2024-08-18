@@ -30,18 +30,3 @@ void Grid::SetPixelAtLocation(int Row, int Column, int Value)
     mGrid[Row][Column] = Value;
 }
 
-void Grid::ComputeTick()
-{
-    for(int i = mGrid.size()-1 ; i > 0; i--)
-    {
-        for(int j = mGrid[0].size() ; j > 0 ; j--)
-        {
-            if(mGrid[i][j]>0 ){
-                mGrid[i][j+1]=mGrid[i][j];
-                mGrid[i][j]=0;
-            }
-        }
-    }
-}
-
-//&& (i < (mGrid[0].size()-1)
