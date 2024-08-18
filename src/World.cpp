@@ -2,8 +2,8 @@
 
 World::World()
 {
-    currentGrid = Grid(SCREEN_WIDTH/PIXELSIZE, SCREEN_HEIGHT/PIXELSIZE);
-    nextGrid = Grid(SCREEN_WIDTH/PIXELSIZE, SCREEN_HEIGHT/PIXELSIZE);
+    currentGrid = Grid(SCREEN_HEIGHT/PIXELSIZE, SCREEN_WIDTH/PIXELSIZE);
+    nextGrid = Grid(SCREEN_HEIGHT/PIXELSIZE, SCREEN_WIDTH/PIXELSIZE);
 }
 
 void World::ComputeTick()
@@ -16,5 +16,5 @@ void World::ComputeTick()
 void World::initWorld()
 {
     currentGrid.DisplayGrid();
-    currentGrid.SetPixelAtLocation(96,54,125);
+    currentGrid.SetPixelAtLocation(54,96,125);
 }

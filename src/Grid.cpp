@@ -39,11 +39,11 @@ void Grid::ComputeNextGrid(Grid& nextGrid)
     {
         for(int j = 0 ; j < mGrid[0].size() ; j++)
         {    
-            if(j == 0 ){
+            if(i == 0 ){
                 nextGrid.SetPixelAtLocation(i, j, 0);
             }
             else{
-                nextGrid.SetPixelAtLocation(i, j, mGrid[i][j-1]);  
+                nextGrid.SetPixelAtLocation(i, j, mGrid[i-1][j]);  
             }
             
         }
