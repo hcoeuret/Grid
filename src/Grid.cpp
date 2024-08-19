@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Grid.h"
+#include "Global.h"
 
 using namespace std;
 
@@ -27,6 +28,10 @@ void Grid::DisplayGrid() const
 
 void Grid::SetPixelAtLocation(int Row, int Column, int Value)
 {
+    if(Row > (SCREEN_HEIGHT/PIXELSIZE -1)|| Row < 0 || (Column > SCREEN_WIDTH/PIXELSIZE - 1) || Column < 0 ){
+        std:cerr << "Writing out of bounds" << std::endl;
+        return;
+    }
     mGrid[Row][Column] = Value;
 }
 
@@ -39,13 +44,15 @@ void Grid::ComputeNextGrid(Grid& nextGrid)
     {
         for(int j = 0 ; j < mGrid[0].size() ; j++)
         {    
-            if(i == 0 ){
+            if(i == 0){
                 nextGrid.SetPixelAtLocation(i, j, 0);
+            }
+            else if((i == mGrid.size()-1 && mGrid[i-1][j] == 0)){
+                nextGrid.SetPixelAtLocation(i, j, mGrid[i][j]);
             }
             else{
                 nextGrid.SetPixelAtLocation(i, j, mGrid[i-1][j]);  
             }
-            
         }
     }
 }
