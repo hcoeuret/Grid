@@ -24,6 +24,18 @@ void Grid::DisplayGrid() const
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl;
+}
+
+void Grid::ResetGrid()
+{
+    for(int i = 0 ; i < mGrid.size(); i++)
+    {
+        for(int j = 0 ; j < mGrid[0].size(); j++)
+        {
+            mGrid[i][j] = 0;
+        }
+    }
 }
 
 void Grid::SetPixelAtLocation(int Row, int Column, int Value)
@@ -37,22 +49,79 @@ void Grid::SetPixelAtLocation(int Row, int Column, int Value)
 
 /*
 nextGrid is an out parameter where the next computed state of the grid will be written
+To compute the next grid, we go through the pixel grid
 */
 void Grid::ComputeNextGrid(Grid& nextGrid)
+{ 
+    for(int i = 0 ; i < mGrid.size(); i++)
+    {
+        for(int j = 0 ; j < mGrid[0].size(); j++)
+        {
+            //check if pixel has a value
+            if(mGrid[i][j]>0){
+                //check if we have space under to fall
+                if(hasSpaceToFall(i, j)){
+                    nextGrid.SetPixelAtLocation(i+1, j, mGrid[i][j]);
+                }
+                /*
+                else{
+                   switch(ComputeNextPixelPosition(i,j))
+                   {
+                   case 0:
+                    
+                    break;
+                   case 1:
+                    
+                    break;
+                   case 2:
+                    
+                    break;  
+                   default:
+                    break;
+                   }(); 
+                }
+                */
+            }
+        }
+    }
+}
+
+bool Grid::hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const
 {
+    bool bSpaceDetected = false;
+    for(int i = PixelRowPosition ; i < mGrid.size()-1; i++){
+        if(mGrid[i][PixelColumnPosition]==0){
+            bSpaceDetected = true;
+        }
+    }
+
+    return bSpaceDetected;
+}
+
+int Grid::ComputeNextPixelPosition(int PixelRowPosition, int PixelColumnPosition) const
+{
+    return 0;
+}
+
+/*
     for(int i = 0 ; i < mGrid.size(); i++)
     {
         for(int j = 0 ; j < mGrid[0].size() ; j++)
-        {    
+        {
+              
             if(i == 0){
                 nextGrid.SetPixelAtLocation(i, j, 0);
             }
-            else if((i == mGrid.size()-1 && mGrid[i-1][j] == 0)){
+            else if((i == mGrid.size()-1 && mGrid[i][j] != 0)){
                 nextGrid.SetPixelAtLocation(i, j, mGrid[i][j]);
             }
+            else if(mGrid[i][j] > 0 && mGrid[i-1][j] > 0 ){
+                
+            }      
+            }  
             else{
                 nextGrid.SetPixelAtLocation(i, j, mGrid[i-1][j]);  
             }
         }
     }
-}
+    */

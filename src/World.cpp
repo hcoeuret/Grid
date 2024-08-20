@@ -2,19 +2,36 @@
 
 World::World()
 {
-    currentGrid = Grid(SCREEN_HEIGHT/PIXELSIZE - 10, SCREEN_WIDTH/PIXELSIZE);
-    nextGrid = Grid(SCREEN_HEIGHT/PIXELSIZE - 10, SCREEN_WIDTH/PIXELSIZE);
+    currentGrid = Grid(SCREEN_HEIGHT/PIXELSIZE - 7, SCREEN_WIDTH/PIXELSIZE);
+    nextGrid = Grid(SCREEN_HEIGHT/PIXELSIZE - 7, SCREEN_WIDTH/PIXELSIZE);
 }
 
 void World::ComputeTick()
 {
+    nextGrid.ResetGrid();
     currentGrid.ComputeNextGrid(nextGrid);
     currentGrid = nextGrid;
+    
 
 }
 
 void World::initWorld()
 {
+    /*debug*/
+    /*
+    currentGrid.SetPixelAtLocation(2,3,1);
+    ComputeTick();
     currentGrid.DisplayGrid();
+    ComputeTick();
+    currentGrid.DisplayGrid();
+    ComputeTick();
+    currentGrid.DisplayGrid();
+    */
     currentGrid.SetPixelAtLocation(54,96,125);
+    currentGrid.SetPixelAtLocation(52,96,125);
+    currentGrid.SetPixelAtLocation(50,96,125);
+    currentGrid.SetPixelAtLocation(48,96,125);
+    currentGrid.SetPixelAtLocation(23,78,125);
+    currentGrid.SetPixelAtLocation(78,20,125);
+    
 }

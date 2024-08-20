@@ -19,8 +19,11 @@ class Grid
         
         const std::vector<std::vector<int>>& getGrid() const;
         void DisplayGrid() const;
+        void ResetGrid();
         void SetPixelAtLocation(int Row, int Column, int Value);
         void ComputeNextGrid(Grid& nextGrid);
+        bool hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const;
+        int ComputeNextPixelPosition(int PixelRowPosition, int PixelColumnPosition) const;
         
 
 };
