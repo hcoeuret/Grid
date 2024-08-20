@@ -1,5 +1,5 @@
 #include <iostream>
-#include <ctime> 
+#include <random> 
 
 #include "Grid.h"
 #include "Global.h"
@@ -89,15 +89,18 @@ bool Grid::hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const
 
 void Grid::ComputeNextPixelPosition(int PixelRPos, int PixelCPos, Grid& nextGrid) const
 {
-    srand(static_cast<unsigned int>(time(0))); //init random generator
+    // Use a random device to seed the random number generator
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, 1);
 
-    if(PixelRPos < (mGrid[0].size() - 1)){
+    if(PixelRPos < (mGrid.size()-1)){
         if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
-            if (rand() % 2 == 0) {
-                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos , mGrid[PixelRPos][PixelCPos]);
+            if (dis(gen) == 0) {
+                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos +1, mGrid[PixelRPos][PixelCPos]);
             }
             else{
-                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos , mGrid[PixelRPos][PixelCPos]);
+                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos -1 , mGrid[PixelRPos][PixelCPos]);
             }
         
         }
