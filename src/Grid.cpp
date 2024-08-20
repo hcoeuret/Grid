@@ -1,7 +1,9 @@
 #include <iostream>
+#include <ctime> 
 
 #include "Grid.h"
 #include "Global.h"
+
 
 using namespace std;
 
@@ -53,6 +55,7 @@ To compute the next grid, we go through the pixel grid
 */
 void Grid::ComputeNextGrid(Grid& nextGrid)
 { 
+    
     for(int i = 0 ; i < mGrid.size(); i++)
     {
         for(int j = 0 ; j < mGrid[0].size(); j++)
@@ -63,24 +66,10 @@ void Grid::ComputeNextGrid(Grid& nextGrid)
                 if(hasSpaceToFall(i, j)){
                     nextGrid.SetPixelAtLocation(i+1, j, mGrid[i][j]);
                 }
-                /*
-                else{
-                   switch(ComputeNextPixelPosition(i,j))
-                   {
-                   case 0:
-                    
-                    break;
-                   case 1:
-                    
-                    break;
-                   case 2:
-                    
-                    break;  
-                   default:
-                    break;
-                   }(); 
+                else{ 
+                    ComputeNextPixelPosition(i, j, nextGrid);
                 }
-                */
+                
             }
         }
     }
@@ -89,7 +78,7 @@ void Grid::ComputeNextGrid(Grid& nextGrid)
 bool Grid::hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const
 {
     bool bSpaceDetected = false;
-    for(int i = PixelRowPosition ; i < mGrid.size()-1; i++){
+    for(int i = PixelRowPosition ; i < mGrid.size(); i++){
         if(mGrid[i][PixelColumnPosition]==0){
             bSpaceDetected = true;
         }
@@ -98,30 +87,32 @@ bool Grid::hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const
     return bSpaceDetected;
 }
 
-int Grid::ComputeNextPixelPosition(int PixelRowPosition, int PixelColumnPosition) const
+void Grid::ComputeNextPixelPosition(int PixelRPos, int PixelCPos, Grid& nextGrid) const
 {
-    return 0;
-}
+    srand(static_cast<unsigned int>(time(0))); //init random generator
 
-/*
-    for(int i = 0 ; i < mGrid.size(); i++)
-    {
-        for(int j = 0 ; j < mGrid[0].size() ; j++)
-        {
-              
-            if(i == 0){
-                nextGrid.SetPixelAtLocation(i, j, 0);
+    if(PixelRPos < (mGrid[0].size() - 1)){
+        if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
+            if (rand() % 2 == 0) {
+                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos , mGrid[PixelRPos][PixelCPos]);
             }
-            else if((i == mGrid.size()-1 && mGrid[i][j] != 0)){
-                nextGrid.SetPixelAtLocation(i, j, mGrid[i][j]);
-            }
-            else if(mGrid[i][j] > 0 && mGrid[i-1][j] > 0 ){
-                
-            }      
-            }  
             else{
-                nextGrid.SetPixelAtLocation(i, j, mGrid[i-1][j]);  
+                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos , mGrid[PixelRPos][PixelCPos]);
             }
+        
+        }
+        if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
+            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+        }
+        if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+        }
+        if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
         }
     }
-    */
+    else{
+        nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+    }
+    
+}

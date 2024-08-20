@@ -23,7 +23,7 @@ class Grid
         void SetPixelAtLocation(int Row, int Column, int Value);
         void ComputeNextGrid(Grid& nextGrid);
         bool hasSpaceToFall(int PixelRowPosition, int PixelColumnPosition) const;
-        int ComputeNextPixelPosition(int PixelRowPosition, int PixelColumnPosition) const;
+        void ComputeNextPixelPosition(int PixelRPos, int PixelCPos, Grid& nextGrid) const;
         
 
 };
