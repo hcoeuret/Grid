@@ -42,7 +42,7 @@ void Grid::ResetGrid()
 
 void Grid::SetPixelAtLocation(int Row, int Column, int Value)
 {
-    if(Row > (SCREEN_HEIGHT/PIXELSIZE -1)|| Row < 0 || (Column > SCREEN_WIDTH/PIXELSIZE - 1) || Column < 0 ){
+    if(Row >= mGrid.size() || Row < 0 || (Column >=mGrid[0].size() ) || Column < 0 ){
         std:cerr << "Writing out of bounds" << std::endl;
         return;
     }
@@ -95,22 +95,25 @@ void Grid::ComputeNextPixelPosition(int PixelRPos, int PixelCPos, Grid& nextGrid
     std::uniform_int_distribution<> dis(0, 1);
 
     if(PixelRPos < (mGrid.size()-1)){
-        if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
+        if(mGrid[PixelRPos +1][PixelCPos + 1] == 0 && mGrid[PixelRPos +1][PixelCPos - 1] == 0){
             if (dis(gen) == 0) {
-                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos +1, mGrid[PixelRPos][PixelCPos]);
+                nextGrid.SetPixelAtLocation(PixelRPos + 1, PixelCPos +1, mGrid[PixelRPos][PixelCPos]);
             }
             else{
-                nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos -1 , mGrid[PixelRPos][PixelCPos]);
+                nextGrid.SetPixelAtLocation(PixelRPos + 1, PixelCPos -1 , mGrid[PixelRPos][PixelCPos]);
             }
         
         }
-        if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
+        else if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
             nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
         }
-        if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+        else if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
             nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
         }
-        if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+        else if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+        }
+        else{
             nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
         }
     }
