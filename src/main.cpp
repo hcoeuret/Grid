@@ -11,7 +11,7 @@ int main()
 {
     //create and init world
     World world;
-    world.initWorld();
+    //world.initWorld(); //not useful for now
 
     //Initialize SDL display 
     DisplaySystem GridDisplaySystem;

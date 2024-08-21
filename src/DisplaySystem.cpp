@@ -69,7 +69,7 @@ void DisplaySystem::RenderLoop(World& world)
 
         
 
-        SDL_SetRenderDrawColor(renderer, 0, 0, 255, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);
         world.ComputeTick();
         DisplayGrid(world.getCurrentGrid());
@@ -86,7 +86,12 @@ void DisplaySystem::DisplayGrid(const Grid& grid)
     SDL_Rect tmp_rect; //x, y, w, h
     for(int i = 0 ; i < grid.getGrid().size(); i++){
         for(int j = 0 ; j < grid.getGrid()[0].size() ; j++){
-            SDL_SetRenderDrawColor(renderer, grid.getGrid()[i][j], grid.getGrid()[i][j], grid.getGrid()[i][j], 255);  // Red rectangle
+            if(grid.getGrid()[i][j] == 0){
+                SDL_SetRenderDrawColor(renderer, 119, 181, 254, 255);
+            }
+            else{
+                SDL_SetRenderDrawColor(renderer, 198, 166, 100, 255);
+            }
             tmp_rect= SDL_Rect{j*PIXELSIZE,i*PIXELSIZE,PIXELSIZE,PIXELSIZE}; //x, y, w, h
             SDL_RenderFillRect(renderer, &tmp_rect);
         }
