@@ -104,13 +104,13 @@ void Grid::ComputeNextPixelPosition(int PixelRPos, int PixelCPos, Grid& nextGrid
             }
         
         }
-        else if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] == 0){
-            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+        else if(mGrid[PixelRPos + 1][PixelCPos + 1] > 0 && mGrid[PixelRPos + 1][PixelCPos - 1] == 0){
+            nextGrid.SetPixelAtLocation(PixelRPos + 1, PixelCPos - 1, mGrid[PixelRPos][PixelCPos]);
         }
-        else if(mGrid[PixelRPos][PixelCPos + 1] == 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
-            nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
+        else if(mGrid[PixelRPos + 1][PixelCPos + 1] == 0 && mGrid[PixelRPos + 1][PixelCPos - 1] > 0){
+            nextGrid.SetPixelAtLocation(PixelRPos + 1, PixelCPos + 1, mGrid[PixelRPos][PixelCPos]);
         }
-        else if(mGrid[PixelRPos][PixelCPos + 1] > 0 && mGrid[PixelRPos][PixelCPos - 1] > 0){
+        else if(mGrid[PixelRPos + 1][PixelCPos + 1] > 0 && mGrid[PixelRPos + 1][PixelCPos - 1] > 0){
             nextGrid.SetPixelAtLocation(PixelRPos, PixelCPos, mGrid[PixelRPos][PixelCPos]);
         }
         else{

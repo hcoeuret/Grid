@@ -13,7 +13,6 @@ int main()
     World world;
     world.initWorld();
 
-
     //Initialize SDL display 
     DisplaySystem GridDisplaySystem;
 
