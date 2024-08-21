@@ -36,6 +36,8 @@ void DisplaySystem::RenderLoop(World& world)
     // Event handler
     SDL_Event e;
 
+    bool leftbuttonPressed = false;
+
     // While the application is running
     while (!quit) {
         // Handle events on the queue
@@ -44,7 +46,28 @@ void DisplaySystem::RenderLoop(World& world)
             if (e.type == SDL_QUIT) {
                 quit = true;
             }
+
+            // Detect mouse button down event
+            if (e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT) {
+                leftbuttonPressed = true;
+                printf("Right mouse button pressed at (%d, %d)\n", e.button.x, e.button.y);
+            }
+
+            // Detect mouse button up event
+            if (e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT) {
+                leftbuttonPressed = false;
+                printf("Right mouse button released at (%d, %d)\n", e.button.x, e.button.y);
+            }
         }
+
+        // Continuous event while right mouse button is held
+        if (leftbuttonPressed) {
+            int x, y;
+            SDL_GetMouseState(&x, &y);
+            world.CreatePixel(x, y);
+        }
+
+        
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderClear(renderer);

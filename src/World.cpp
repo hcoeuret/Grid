@@ -39,12 +39,17 @@ void World::initWorld()
     currentGrid.DisplayGrid();
     */
    
-    currentGrid.SetPixelAtLocation(54,96,125);
-    currentGrid.SetPixelAtLocation(52,96,125);
-    currentGrid.SetPixelAtLocation(50,96,125);
-    currentGrid.SetPixelAtLocation(48,96,125);
-    currentGrid.SetPixelAtLocation(23,78,125);
-    currentGrid.SetPixelAtLocation(78,20,125);
+    currentGrid.SetPixelAtLocation(54,96,DEFAULT_PIXEL_VALUE);
+    currentGrid.SetPixelAtLocation(52,96,DEFAULT_PIXEL_VALUE);
+    currentGrid.SetPixelAtLocation(50,96,DEFAULT_PIXEL_VALUE);
+    currentGrid.SetPixelAtLocation(48,96,DEFAULT_PIXEL_VALUE);
+    currentGrid.SetPixelAtLocation(23,78,DEFAULT_PIXEL_VALUE);
+    currentGrid.SetPixelAtLocation(78,20,DEFAULT_PIXEL_VALUE);
     
     
+}
+
+void World::CreatePixel(int xPosClick, int yPosClick)
+{
+    currentGrid.SetPixelAtLocation(yPosClick/PIXELSIZE, xPosClick/PIXELSIZE, DEFAULT_PIXEL_VALUE);
 }

@@ -26,6 +26,7 @@ class World
         return currentGrid;
     }
     void initWorld();
+    void CreatePixel(int xPosClick, int yPosClick);
 
 
 };
